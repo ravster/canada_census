@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem "pry-rails"
+gem "json"
+gem "multi_json"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
 
