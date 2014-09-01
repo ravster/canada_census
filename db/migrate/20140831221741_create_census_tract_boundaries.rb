@@ -1,6 +1,6 @@
 class CreateCensusTractBoundaries < ActiveRecord::Migration
   def change
-    create_table :census_tract_boundaries, id: false do |t|
+    create_table :census_tracts, id: false do |t|
       t.string :ctuid
       t.string :ctname
       t.string :cmauid
@@ -9,10 +9,11 @@ class CreateCensusTractBoundaries < ActiveRecord::Migration
       t.string :cmapuid
       t.string :pruid
       t.string :prname
+      t.json :data
       t.column :geom, :geometry
     end
 
-    add_index :census_tract_boundaries, :ctuid
-    add_index :census_tract_boundaries, :geom, using: :gist
+    add_index :census_tracts, :ctuid
+    add_index :census_tracts, :geom, using: :gist
   end
 end

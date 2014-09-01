@@ -1,5 +1,6 @@
-class CensusTractBoundary < ActiveRecord::Base
-  before_validation :create_geom_from_geojson
+class CensusTract < ActiveRecord::Base
+  self.primary_key = :ctuid
+  before_create :create_geom_from_geojson
 
   private
   def create_geom_from_geojson

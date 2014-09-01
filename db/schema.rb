@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140831221741) do
   enable_extension "plpgsql"
   enable_extension "postgis"
 
-# Could not dump table "census_tract_boundaries" because of following NoMethodError
+# Could not dump table "census_tracts" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
   create_table "spatial_ref_sys", id: false, force: true do |t|
