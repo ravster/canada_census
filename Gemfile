@@ -5,6 +5,7 @@ gem "angularjs-rails"
 gem "pry-rails"
 gem "json"
 gem "multi_json"
+gem "haml-rails"
 
 gem 'rails', '4.0.5'
 gem 'activerecord-jdbcpostgresql-adapter'
