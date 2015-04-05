@@ -25,9 +25,8 @@ class CensusTract < ActiveRecord::Base
                   end
 
     db.select_value(
-      "WITH records AS ( SELECT ctuid, ctname, cmauid, cmaname, cmatype, cmapuid, pruid, prname, data, ST_AsKML(geom) AS geom
-      FROM census_tracts
-      #{constraints} )
+      "WITH records AS ( SELECT ctuid, ctname, cmauid, cmaname, cmatype, cmapuid, pruid, prname, data, ST_AsGeoJSON(geom) AS geom
+      FROM census_tracts )
       SELECT array_to_json(array_agg(row_to_json(records))) FROM records"
       )
   end

@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+#map{ height: 100vh;
+      width: 50%;
+      float: left;
+    }
+
+.content{
+    height: 100vh;
+    width: 49%;
+    float: right;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

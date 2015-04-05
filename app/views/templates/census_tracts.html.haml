@@ -1,16 +1,23 @@
-%div{"ng-controller" => "MainCtrl"}
+%div#map
+
+%div.content{"ng-controller" => "MainCtrl"}
   %ul
-    %li
-      Any:
-      %input{"ng-model" => "search.$"}
     %li
       Province Name:
       %input{"ng-model" => "search.prname"}
     %li
       CMA Name:
       %input{"ng-model" => "search.cmaname"}
+    %li
+      Maximum Individual Median Income (Combined):
+      %input{"ng-model" => "search.maxIndivMedianIncomeCombined"}
+    %li
+      Minimum Individual Median Income (Combined)::
+      %input{"ng-model" => "search.minIndivMedianIncomeCombined"}
 
-  %div.well{"ng-repeat" => "tract in tracts | filter:search"}
+  %div.well{"ng-repeat" => "tract in tracts | filter:criteriaMatch(search)"}
+    %a{href: '', 'ng-click' => 'addToMap($index)', 'ng-show'=>'tract.ableToAddToMap'}Add to map
+    %a{href: '', 'ng-click' => 'viewOnMap($index)'}View on map
     %p Census Tract UID: {{ tract.ctuid }}
     %p Province Name: {{ tract.prname }}
     %p CMA Name: {{ tract.cmaname }}
