@@ -2,6 +2,8 @@ class CensusTract < ActiveRecord::Base
   self.primary_key = :ctuid
   before_create :create_geom_from_geojson
 
+  default_scope { where("data NOT NULL") }
+
   def self.return_tracts_as_json_string options={}
     db = ActiveRecord::Base.connection
 
@@ -26,7 +28,8 @@ class CensusTract < ActiveRecord::Base
 
     db.select_value(
       "WITH records AS ( SELECT ctuid, ctname, cmauid, cmaname, cmatype, cmapuid, pruid, prname, data, ST_AsGeoJSON(geom) AS geom
-      FROM census_tracts )
+      FROM census_tracts
+      WHERE data IS NOT NULL )
       SELECT array_to_json(array_agg(row_to_json(records))) FROM records"
       )
   end
